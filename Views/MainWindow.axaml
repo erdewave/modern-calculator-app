@@ -9,8 +9,8 @@
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="600" Width="400" Height="600" CanResize="False" MaxHeight="600" MaxWidth="400"
         x:Class="modern_calculator_app.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="modern_calculator_app"
+        Icon="/Assets/calculator-logo.ico"
+        Title="Modern Calculator"
         TransparencyLevelHint="AcrylicBlur"
         Background="Transparent">
 
@@ -20,7 +20,7 @@
     
     <Window.Styles>
         <Style Selector="Button.glass">
-            <Setter Property="Background" Value="#40FFFFFF"/>
+            <Setter Property="Background" Value="#10FFFFFF"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
@@ -56,19 +56,18 @@
         </Grid.ColumnDefinitions>
         
         <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" >
-            <TextBlock Margin="-90,5" Text="{Binding OldText}" RenderTransform="translate(0, 0)">
-            </TextBlock>
-            <TextBlock Width="400" Height="100" FontSize="60" Margin="0,0" Focusable="False" Background="Transparent" Text="{Binding DisplayText}"></TextBlock>
+            <TextBlock Foreground="WhiteSmoke" Margin="-90,5" Text="{Binding OldText}" RenderTransform="translate(0, 0)"></TextBlock>
+            <TextBlock Foreground="White" Width="400" Height="100" FontSize="60" Margin="0,0" Focusable="False" Background="Transparent" Text="{Binding DisplayText}"></TextBlock>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="5">
-            <Button Classes="glass" Content="B" HotKey="B" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Button>
+            <Button Classes="glass" Content="C" HotKey="C" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding ClearCommand}"></Button>
             <Button Classes="glass" Content="1" HotKey="D1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding NumberCommand}" CommandParameter="1"></Button>
             <Button Classes="glass" Content="4" HotKey="D4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding NumberCommand}" CommandParameter="4"></Button>
             <Button Classes="glass" Content="7" HotKey="D7" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding NumberCommand}" CommandParameter="7"></Button>
             <Button IsEnabled="True" Classes="glass" Content="" HotKey="Escape" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Red" Click="CloseButton_Click"></Button>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="5">
-            <Button Classes="glass" Content="C" HotKey="C" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding ClearCommand}"></Button>
+            <Button Classes="glass" Content="B" HotKey="B" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Button>
             <Button Classes="glass" Content="2" HotKey="D2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding NumberCommand}" CommandParameter="2"></Button>
             <Button Classes="glass" Content="5" HotKey="D5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding NumberCommand}" CommandParameter="5"></Button>
             <Button Classes="glass" Content="8" HotKey="D8" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding NumberCommand}" CommandParameter="7"></Button>

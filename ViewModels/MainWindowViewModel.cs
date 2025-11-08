@@ -160,7 +160,7 @@ public partial class MainWindowViewModel : INotifyPropertyChanged
         {
             result = FirstNumber - SecondNumber;
         }
-        else if (Operation == "*")
+        else if (Operation == "x")
         {
             result = FirstNumber * SecondNumber;
         }
