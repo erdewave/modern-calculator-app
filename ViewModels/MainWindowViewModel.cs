@@ -76,6 +76,7 @@ public partial class MainWindowViewModel : INotifyPropertyChanged
     public ICommand OperationCommand { get; }
     public ICommand EqualsCommand { get; }
     public ICommand ClearCommand { get; }
+    public ICommand BackCommand { get; }
     
     
     public MainWindowViewModel()
@@ -84,6 +85,7 @@ public partial class MainWindowViewModel : INotifyPropertyChanged
         EqualsCommand = new RelayCommand(OnEqualsClicked);
         OperationCommand = new RelayCommand<string>(OnOperationClicked!);
         ClearCommand = new RelayCommand(OnClearClicked);
+        BackCommand = new RelayCommand(OnBackClicked);
     }
     
     private void OnNumberClicked(string number)
@@ -95,7 +97,32 @@ public partial class MainWindowViewModel : INotifyPropertyChanged
         else
             DisplayText += number;      
     }
+    private void OnBackClicked()
+    {
+        if (DisplayText.EndsWith($" {Operation} "))
+        {
+            return;
+        }
+        
+        string[] numbers = DisplayText.Split(' ');
+        string lastIndex = numbers[numbers.Length - 1];
+        
+        if (lastIndex.Length > 1)
+        {
+            numbers[numbers.Length - 1] = lastIndex.Remove(lastIndex.Length - 1);
+            DisplayText = string.Join(" ", numbers); 
+        }
 
+        else if (numbers.Length > 1)
+        {
+            numbers[numbers.Length - 1] = "";
+            DisplayText = string.Join(" ", numbers);
+        }
+        else
+        {
+            DisplayText = "0";
+        }
+    }
     private void OnOperationClicked(string operation)
     {
         if (!string.IsNullOrEmpty(Operation) && DisplayText.EndsWith($" {Operation} "))
@@ -105,24 +132,9 @@ public partial class MainWindowViewModel : INotifyPropertyChanged
             return;
         }
         
-        if (!string.IsNullOrEmpty(Operation) && !DisplayText.EndsWith($" {Operation} "))
-        {
-            string[] parcalar = DisplayText.Split(' ');
-            if (parcalar.Length >= 3 && double.TryParse(parcalar[parcalar.Length - 1], out double secondNum))
-            {
-                SecondNumber = secondNum;
-                double result = 0;
-            
-                if (Operation == "+") result = FirstNumber + SecondNumber;
-                else if (Operation == "-") result = FirstNumber - SecondNumber;
-                else if (Operation == "*") result = FirstNumber * SecondNumber;
-                else if (Operation == "/") result = FirstNumber / SecondNumber;
-            
-                DisplayText = result.ToString();
-                FirstNumber = result; 
-            }
-        }
-        else
+        string[] numbers = DisplayText.Split(' ');
+
+        if (numbers.Length == 1)
         {
             FirstNumber = double.Parse(DisplayText);
         }
@@ -141,10 +153,10 @@ public partial class MainWindowViewModel : INotifyPropertyChanged
     }
     private void OnEqualsClicked()
     {
-        string[] parcalar = DisplayText.Split(' ');
-        int sonIndex = parcalar.Length - 1;
+        string[] numbers = DisplayText.Split(' ');
+        int lastIndex = numbers.Length - 1;
         
-        if (string.IsNullOrWhiteSpace(parcalar[sonIndex]) || !double.TryParse(parcalar[sonIndex], out double secondNum))
+        if (string.IsNullOrWhiteSpace(numbers[lastIndex]) || !double.TryParse(numbers[lastIndex], out double secondNum))
         {
             return;  
         }

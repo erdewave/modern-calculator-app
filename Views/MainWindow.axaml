@@ -57,7 +57,7 @@
         
         <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" >
             <TextBlock Foreground="WhiteSmoke" Margin="-90,5" Text="{Binding OldText}" RenderTransform="translate(0, 0)"></TextBlock>
-            <TextBlock Foreground="White" Width="400" Height="100" FontSize="60" Margin="0,0" Focusable="False" Background="Transparent" Text="{Binding DisplayText}"></TextBlock>
+            <TextBlock TextAlignment="Right" Foreground="White" Width="400" Height="100" FontSize="60" Margin="0,0" Focusable="False" Background="Transparent" Text="{Binding DisplayText}"></TextBlock>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="5">
             <Button Classes="glass" Content="C" HotKey="C" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding ClearCommand}"></Button>
@@ -71,7 +71,7 @@
             <Button Classes="glass" Content="2" HotKey="D2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding NumberCommand}" CommandParameter="2"></Button>
             <Button Classes="glass" Content="5" HotKey="D5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding NumberCommand}" CommandParameter="5"></Button>
             <Button Classes="glass" Content="8" HotKey="D8" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding NumberCommand}" CommandParameter="7"></Button>
-            <Button IsEnabled="True" Classes="glass" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Button>
+            <Button Classes="glass" Content="b" HotKey="Back" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding BackCommand}"></Button>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="5">
             <Button Classes="glass" Content="%" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Button>
@@ -82,9 +82,9 @@
         </StackPanel>
         <StackPanel Grid.Column="3" Grid.Row="1" Grid.RowSpan="5">
             <Button Classes="glass" Content="/" HotKey="Shift+7" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="DarkOrange" Command="{Binding OperationCommand}" CommandParameter="/"></Button>
-            <Button Classes="glass" Content="X" HotKey="Multiply" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="DarkOrange" Command="{Binding OperationCommand}" CommandParameter="x"></Button>
-            <Button Classes="glass" Content="-" HotKey="-" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="DarkOrange" Command="{Binding OperationCommand}" CommandParameter="-"></Button>
-            <Button Classes="glass" Content="+" HotKey="Add" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="DarkOrange" Command="{Binding OperationCommand}" CommandParameter="+"></Button>
+            <Button Classes="glass" Content="x" HotKey="Multiply" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="DarkOrange" Command="{Binding OperationCommand}" CommandParameter="x"></Button>
+            <Button Classes="glass" Content="-" HotKey="OemMinus" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="DarkOrange" Command="{Binding OperationCommand}" CommandParameter="-"></Button>
+            <Button Classes="glass" Content="+" HotKey="OemPlus" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="DarkOrange" Command="{Binding OperationCommand}" CommandParameter="+"></Button>
             <Button Classes="glass" Content="=" HotKey="Enter" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="LimeGreen" Command="{Binding EqualsCommand}"></Button>
         </StackPanel>
         
